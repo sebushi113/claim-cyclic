@@ -11,9 +11,9 @@ import * as notify from "./notify.js";
 const privateKeys = [process.env.cs1c, process.env.cd3c];
 
 const signatureProvider = new JsSignatureProvider(privateKeys);
-let rpc = new JsonRpc("https://wax.greymass.com", { fetch });
+// let rpc = new JsonRpc("https://wax.greymass.com", { fetch });
 // const rpc = new JsonRpc("https://wax.eosusa.news/", { fetch }); //https://wax.eosio.online/endpoints
-// const rpc = new JsonRpc("http://wax.api.eosnation.io/", { fetch });
+const rpc = new JsonRpc("http://wax.api.eosnation.io/", { fetch });
 // const rpc = new JsonRpc("https://wax.greymass.com"); //required to read blockchain state
 let api = new Api({ rpc, signatureProvider }); //required to submit transactions
 

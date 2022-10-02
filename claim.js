@@ -60,7 +60,7 @@ async function cs1_claim_rplanet() {
     await cs1_claim_rplanet();
   } catch (error) {
     if (error.message == "assertion failure with message: E_NOTHING_TO_CLAIM") {
-      console.log(" 🦁✅ | nothing to claim, waiting...");
+      console.log(" 🦁✅  | nothing to claim, waiting...");
       // console.log("- 🦁   RP nothing to claim ✅");
       // console.log(
       //   `- 🦁   RP trying to claim again at ${moment(new Date())
@@ -122,7 +122,7 @@ async function cd3_claim_rplanet() {
     await cd3_claim_rplanet();
   } catch (error) {
     if (error.message == "assertion failure with message: E_NOTHING_TO_CLAIM") {
-      console.log(" 🐵✅ | nothing to claim, waiting...");
+      console.log(" 🐵✅  | nothing to claim, waiting...");
       // console.log(
       //   `- 🐵   RP trying to claim again at ${moment(new Date())
       //     .add(2, "hours")
@@ -188,7 +188,7 @@ async function all_claim_greenrabbit() {
       { useLastIrreversible: true, expireSeconds: 300 }
     );
     console.log(
-      ` 🦁🐵\x1b[32m | ${moment(new Date()).format(date)} | ${
+      ` 🦁🐵 \x1b[32m | ${moment(new Date()).format(date)} | ${
         transaction.transaction_id
       }\x1b[0m`
     );
@@ -199,19 +199,19 @@ async function all_claim_greenrabbit() {
       error.message ==
       "assertion failure with message: nothing to claim just yet"
     ) {
-      console.log(" ✅✅ | nothing to claim, waiting...");
+      console.log(" ✅✅  | nothing to claim, waiting...");
     } else if (
       error.message ==
       "estimated CPU time (0 us) is not less than the maximum billable CPU time for the transaction (0 us)"
     ) {
       console.log(
-        ` 🦁🐵\x1b[31m | ${moment(new Date()).format(date)} | api error\x1b[0m`
+        ` 🦁🐵 \x1b[31m | ${moment(new Date()).format(date)} | api error\x1b[0m`
       );
       await api_error();
       await cs1_claim_rplanet();
     } else {
       console.log(
-        ` 🦁🐵\x1b[31m | ${moment(new Date()).format(
+        ` 🦁🐵 \x1b[31m | ${moment(new Date()).format(
           date
         )} | unknown error\x1b[0m`
       );
@@ -226,20 +226,20 @@ async function api_error() {
   rpc = new JsonRpc("http://wax.api.eosnation.io", { fetch });
   api = new Api({ rpc, signatureProvider }); //required to submit transactions
   console.log("\x1b[33m%s\x1b[0m", "  🔁  | switching api -> " + rpc.endpoint);
-  // let api_error_message =
-  //   "api error 🔁\nswitching api to: http://wax\\.api\\.eosnation\\.io";
-  // notify.sendMessage(api_error_message);
+  let api_error_message =
+    "api error 🔁\nswitching api to: http://wax\\.api\\.eosnation\\.io";
+  notify.sendMessage(api_error_message);
   await sleep(10000);
 }
 
 async function unknown_error() {
   console.log(error);
-  // let unknown_error_message = "unknown error\ncheck console";
-  // notify.sendMessage(unknown_error_message);
+  let unknown_error_message = "unknown error\ncheck console";
+  notify.sendMessage(unknown_error_message);
   await sleep(10000);
 }
 
-cs1_claim_rplanet();
+// cs1_claim_rplanet();
 // cd3_claim_rplanet();
 // all_claim_greenrabbit();
 
@@ -254,7 +254,7 @@ cron.schedule("2 0,2,4,6,8,10,12,14,16,18,20,22 * * *", cd3_claim_rplanet);
 console.log("  🐵   | waiting to claim on min 3 of even hour...");
 
 cron.schedule("0 17 * * */1", all_claim_greenrabbit);
-console.log(" 🦁🐵 | waiting to claim at 13:00:00...");
+console.log(" 🦁🐵  | waiting to claim at 13:00:00...");
 
 // console.log(
 //   "  🦁",

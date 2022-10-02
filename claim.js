@@ -12,9 +12,9 @@ const privateKeys = [process.env.cs1c, process.env.cd3c];
 
 const signatureProvider = new JsSignatureProvider(privateKeys);
 // let rpc = new JsonRpc("https://wax.greymass.com", { fetch });
-// const rpc = new JsonRpc("https://wax.eosusa.news/", { fetch }); //https://wax.eosio.online/endpoints
-const rpc = new JsonRpc("http://wax.api.eosnation.io/", { fetch });
-// const rpc = new JsonRpc("https://wax.greymass.com"); //required to read blockchain state
+// let rpc = new JsonRpc("https://wax.eosusa.news/", { fetch }); //https://wax.eosio.online/endpoints
+let rpc = new JsonRpc("http://wax.api.eosnation.io/", { fetch });
+// let rpc = new JsonRpc("https://wax.greymass.com"); //required to read blockchain state
 let api = new Api({ rpc, signatureProvider }); //required to submit transactions
 
 const cs1 = process.env.cs1;
@@ -54,9 +54,9 @@ async function cs1_claim_rplanet() {
     //   }`
     // );
     console.log(transaction.transaction_id);
-    // let tx = transaction.transaction_id;
+    let tx = transaction.transaction_id;
     // console.log(tx);
-    // notify.sendMessage(chat_id2, tx);
+    notify.sendMessage(chat_id2, tx);
     await sleep(10000);
     await cs1_claim_rplanet();
   } catch (error) {
@@ -222,8 +222,8 @@ async function unknown_error() {
   await sleep(10000);
 }
 
-cs1_claim_rplanet();
-cd3_claim_rplanet();
+// cs1_claim_rplanet();
+// cd3_claim_rplanet();
 // all_claim_greenrabbit();
 
 console.log(" rpc  | " + rpc.endpoint);

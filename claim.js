@@ -205,7 +205,7 @@ async function unknown_error() {
 }
 
 // cs1_claim_rplanet();
-// cd3_claim_rplanet();
+cd3_claim_rplanet();
 // all_claim_greenrabbit();
 
 console.log(" rpc  | " + rpc.endpoint);

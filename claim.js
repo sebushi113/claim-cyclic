@@ -208,7 +208,7 @@ async function unknown_error() {
 // cd3_claim_rplanet();
 // all_claim_greenrabbit();
 
-console.log("rpc | " + rpc.endpoint);
+console.log(" rpc  | " + rpc.endpoint);
 
 cron.schedule("2 * * * *", cs1_claim_rplanet);
 console.log("  🦁   | waiting to claim on min 2...");

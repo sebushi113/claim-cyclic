@@ -53,9 +53,10 @@ async function cs1_claim_rplanet() {
     //     transaction.transaction_id
     //   }`
     // );
-    let tx = transaction.transaction_id;
-    console.log(tx);
-    notify.sendMessage(chat_id2, tx);
+    console.log(transaction.transaction_id);
+    // let tx = transaction.transaction_id;
+    // console.log(tx);
+    // notify.sendMessage(chat_id2, tx);
     await sleep(10000);
     await cs1_claim_rplanet();
   } catch (error) {

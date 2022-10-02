@@ -291,6 +291,13 @@ console.log(" 🦁🐵 | waiting to claim at 13:00:00...");
 // console.log("🦁🐵 | waiting to claim at 13:00:00...");
 
 /*
+// add local code to github
+git init -b main
+git add . && git commit -m "initial commit"
+gh repo create --source=. --public --push
+*/
+
+/*
 git add .
 git commit -am "make it better"
 git push heroku main [NEW]

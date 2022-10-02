@@ -13,6 +13,7 @@
   "description": "wax claim",
   "main": "claim.js",
   "scripts": {
+    "main": "src/claim.js",
     "start": "node claim.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

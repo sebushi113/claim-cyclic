@@ -186,7 +186,7 @@ async function all_claim_greenrabbit() {
     ) {
       console.log(` 🦁🐵  | ${moment(new Date()).format(date)} | api error`);
       await api_error();
-      await cs1_claim_rplanet();
+      await all_claim_greenrabbit();
     } else {
       console.log(
         ` 🦁🐵  | ${moment(new Date()).format(date)} | unknown error`

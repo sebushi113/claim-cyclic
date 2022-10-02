@@ -115,7 +115,7 @@ async function cd3_claim_rplanet() {
     ) {
       console.log(`  🐵   | ${moment(new Date()).format(date)} | api error`);
       await api_error();
-      await cs1_claim_rplanet();
+      await cd3_claim_rplanet();
     } else {
       console.log(
         `  🐵   | ${moment(new Date()).format(date)} | unknown error`

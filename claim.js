@@ -23,6 +23,8 @@ const cd3 = process.env.cd3;
 const cd3_perm = process.env.cd3perm;
 
 const date = "YYYY-MM-DD HH:mm:ss";
+const chat_id = process.env.chat_id;
+const chat_id2 = process.env.chat_id2;
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));

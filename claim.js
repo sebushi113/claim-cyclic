@@ -46,11 +46,12 @@ async function cs1_claim_rplanet() {
       },
       { useLastIrreversible: true, expireSeconds: 300 }
     );
-    console.log(
-      `  🦁   | ${moment(new Date()).format(date)} | ${
-        transaction.transaction_id
-      }`
-    );
+    // console.log(
+    //   `  🦁   | ${moment(new Date()).format(date)} | ${
+    //     transaction.transaction_id
+    //   }`
+    // );
+    await successful_tx();
     await sleep(10000);
     await cs1_claim_rplanet();
   } catch (error) {
@@ -91,11 +92,12 @@ async function cd3_claim_rplanet() {
       },
       { useLastIrreversible: true, expireSeconds: 300 }
     );
-    console.log(
-      `  🐵   | ${moment(new Date()).format(date)} | ${
-        transaction.transaction_id
-      }`
-    );
+    // console.log(
+    //   `  🐵   | ${moment(new Date()).format(date)} | ${
+    //     transaction.transaction_id
+    //   }`
+    // );
+    await successful_tx();
     await sleep(10000);
     await cd3_claim_rplanet();
   } catch (error) {
@@ -156,11 +158,12 @@ async function all_claim_greenrabbit() {
       // { blocksBehind: 3, expireSeconds: 30 }
       { useLastIrreversible: true, expireSeconds: 300 }
     );
-    console.log(
-      ` 🦁🐵  | ${moment(new Date()).format(date)} | ${
-        transaction.transaction_id
-      }`
-    );
+    // console.log(
+    //   ` 🦁🐵  | ${moment(new Date()).format(date)} | ${
+    //     transaction.transaction_id
+    //   }`
+    // );
+    await successful_tx();
     await sleep(10000);
     await all_claim_greenrabbit();
   } catch (error) {
@@ -187,20 +190,26 @@ async function all_claim_greenrabbit() {
   }
 }
 
+async function successful_tx() {
+  let tx = transaction.transaction_id;
+  console.log(tx);
+  notify.sendMessage(chat_id2, tx);
+}
+
 async function api_error() {
   rpc = new JsonRpc("http://wax.api.eosnation.io", { fetch });
   api = new Api({ rpc, signatureProvider }); //required to submit transactions
   console.log("  🔁  | switching api -> " + rpc.endpoint);
   let api_error_message =
     "api error 🔁\nswitching api to: http://wax\\.api\\.eosnation\\.io";
-  notify.sendMessage(api_error_message);
+  notify.sendMessage(chat_id, api_error_message);
   await sleep(10000);
 }
 
 async function unknown_error() {
   console.log(error);
   let unknown_error_message = "unknown error\ncheck console";
-  notify.sendMessage(unknown_error_message);
+  notify.sendMessage(chat_id, unknown_error_message);
   await sleep(10000);
 }
 

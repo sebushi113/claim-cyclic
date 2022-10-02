@@ -4,16 +4,17 @@ dotenv.config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const chat_id = process.env.chat_id;
+const chat_id2 = process.env.chat_id2;
 // const message = "error: *claim experienced an error*";
 // const error = "error";
 
-export async function sendMessage(error) {
+export async function sendMessage(chat_id, error) {
   await bot.telegram.sendMessage(chat_id, error, {
     parse_mode: "MarkdownV2",
   });
 }
 
-// sendMessage(error);
+// sendMessage(chat_id2, error);
 
 // Enable graceful stop
 // process.once("SIGINT", () => bot.stop("SIGINT"));

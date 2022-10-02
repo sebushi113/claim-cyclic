@@ -6,7 +6,7 @@ import * as cron from "node-cron";
 import moment from "moment";
 import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
-import * as notify from "./notify.js";
+// import * as notify from "./notify.js";
 // import sendMessage from "./notify";
 // const notify = require("./notify");
 const privateKeys = [process.env.cs1c, process.env.cd3c];
@@ -226,16 +226,16 @@ async function api_error() {
   rpc = new JsonRpc("http://wax.api.eosnation.io", { fetch });
   api = new Api({ rpc, signatureProvider }); //required to submit transactions
   console.log("\x1b[33m%s\x1b[0m", "  🔁  | switching api -> " + rpc.endpoint);
-  let api_error_message =
-    "api error 🔁\nswitching api to: http://wax\\.api\\.eosnation\\.io";
-  notify.sendMessage(api_error_message);
+  // let api_error_message =
+  //   "api error 🔁\nswitching api to: http://wax\\.api\\.eosnation\\.io";
+  // notify.sendMessage(api_error_message);
   await sleep(10000);
 }
 
 async function unknown_error() {
   console.log(error);
-  let unknown_error_message = "unknown error\ncheck console";
-  notify.sendMessage(unknown_error_message);
+  // let unknown_error_message = "unknown error\ncheck console";
+  // notify.sendMessage(unknown_error_message);
   await sleep(10000);
 }
 

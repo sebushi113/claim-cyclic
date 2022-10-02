@@ -53,7 +53,7 @@ async function cs1_claim_rplanet() {
     //     transaction.transaction_id
     //   }`
     // );
-    console.log(transaction.transaction_id);
+    console.log("🦁 " + transaction.transaction_id);
     let tx = transaction.transaction_id;
     // console.log(tx);
     notify.sendMessage(chat_id2, tx);
@@ -103,7 +103,7 @@ async function cd3_claim_rplanet() {
     //   }`
     // );
     let tx = transaction.transaction_id;
-    console.log(tx);
+    console.log("🐵 " + tx);
     notify.sendMessage(chat_id2, tx);
     await sleep(10000);
     await cd3_claim_rplanet();
@@ -171,7 +171,7 @@ async function all_claim_greenrabbit() {
     //   }`
     // );
     let tx = transaction.transaction_id;
-    console.log(tx);
+    console.log("🦁🐵 " + tx);
     notify.sendMessage(chat_id2, tx);
     await sleep(10000);
     await all_claim_greenrabbit();

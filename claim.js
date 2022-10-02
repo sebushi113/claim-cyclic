@@ -51,7 +51,9 @@ async function cs1_claim_rplanet() {
     //     transaction.transaction_id
     //   }`
     // );
-    await successful_tx();
+    let tx = transaction.transaction_id;
+    console.log(tx);
+    notify.sendMessage(chat_id2, tx);
     await sleep(10000);
     await cs1_claim_rplanet();
   } catch (error) {
@@ -97,7 +99,9 @@ async function cd3_claim_rplanet() {
     //     transaction.transaction_id
     //   }`
     // );
-    await successful_tx();
+    let tx = transaction.transaction_id;
+    console.log(tx);
+    notify.sendMessage(chat_id2, tx);
     await sleep(10000);
     await cd3_claim_rplanet();
   } catch (error) {
@@ -163,7 +167,9 @@ async function all_claim_greenrabbit() {
     //     transaction.transaction_id
     //   }`
     // );
-    await successful_tx();
+    let tx = transaction.transaction_id;
+    console.log(tx);
+    notify.sendMessage(chat_id2, tx);
     await sleep(10000);
     await all_claim_greenrabbit();
   } catch (error) {
@@ -213,7 +219,7 @@ async function unknown_error() {
   await sleep(10000);
 }
 
-// cs1_claim_rplanet();
+cs1_claim_rplanet();
 cd3_claim_rplanet();
 // all_claim_greenrabbit();
 

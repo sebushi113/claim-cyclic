@@ -222,6 +222,15 @@ async function unknown_error() {
   await sleep(10000);
 }
 
+var http = require("http");
+http
+  .createServer(function (req, res) {
+    console.log(`Just got a request at ${req.url}!`);
+    res.write("Yo!");
+    res.end();
+  })
+  .listen(process.env.PORT || 3000);
+
 cs1_claim_rplanet();
 // cd3_claim_rplanet();
 // all_claim_greenrabbit();

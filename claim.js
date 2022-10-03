@@ -222,7 +222,7 @@ async function unknown_error() {
   await sleep(10000);
 }
 
-// cs1_claim_rplanet();
+cs1_claim_rplanet();
 // cd3_claim_rplanet();
 // all_claim_greenrabbit();
 

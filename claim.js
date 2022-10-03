@@ -222,7 +222,7 @@ async function unknown_error() {
   await sleep(10000);
 }
 
-var http = require("http");
+import * as http from "http";
 http
   .createServer(function (req, res) {
     console.log(`Just got a request at ${req.url}!`);

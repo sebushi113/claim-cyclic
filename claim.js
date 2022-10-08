@@ -366,7 +366,7 @@ app.all("/gr", async (req, res) => {
   res.send("claiming green rabbit...");
 });
 app.all("/cpu4", async (req, res) => {
-  update_cpu4;
+  await update_cpu4.run();
   res.send("updating cpu4...");
 });
 app.listen(process.env.PORT || 3000);

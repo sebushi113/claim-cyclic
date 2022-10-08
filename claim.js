@@ -25,37 +25,8 @@ const cs1p = process.env.cs1;
 const cd3a = process.env.cd3a;
 const cd3p = process.env.cd3p;
 
-// var rex = new RegExp("\\\\");
-// var rex = new RegExp("\\)$|^(\\");
-// var rex = /\\/;
 const date = "YYYY-MM-DD HH:mm:ss";
-// const telegram_date = `YYYY\\\\-MM\\-DD HH:mm:ss`;
-// const telegram_date = String.raw`YYYY\\\\\\-MM\\-DD HH:mm:ss`;
-// const telegram_date = "YYYY" + rex + "-MM" + rex + "-DD HH:mm:ss";
 const telegram_date = "YYYY MM DD  HH:mm:ss";
-// const year = "YYYY";
-// const month = "MM";
-// const day = "DD";
-// const hour = "HH";
-// const minute = "mm";
-// const second = "ss";
-
-// let tx_message = `
-// ${moment(new Date()).format(
-//   year +
-//     "\\-" +
-//     month +
-//     "\\-" +
-//     day +
-//     " " +
-//     hour +
-//     "\\-" +
-//     minute +
-//     "\\-" +
-//     second
-// )}`;
-
-// console.log(tx_message);
 
 const chat_id = process.env.chat_id;
 const chat_id2 = process.env.chat_id2;
@@ -480,44 +451,6 @@ async function unknown_error() {
 }
 
 console.log(" rpc  | " + rpc.endpoint);
-/*
-// console.log(cs1_claim_rplanet());
-
-// let claimed = await cs1_claim_rplanet();
-
-// import express from "express";
-// const app = express();
-// app.all("/", (req, res) => {
-//   console.log("Just got a request!");
-//   res.send("claiming cs1...");
-//   // res.send("claimed" + claimed);
-// });
-// app.listen(process.env.PORT || 3000);
-
-// import * as http from "http";
-// http
-//   .createServer(async function (req, res) {
-//     // console.log(`Just got a request at ${req.url}!`);
-//     res.write("claiming cs1...\n");
-//     // await sleep(20000);
-//     // await cs1_claim_rplanet();
-//     res.write("claimed\n" + (await cs1_claim_rplanet()));
-//     res.end();
-//   })
-//   .listen(process.env.PORT || 3000);
-
-// http.get("http://localhost:3000/cs1", function (response) {
-//   // console.log("Status:", response.statusCode);
-//   // console.log("Headers: ", response.headers);
-//   response.pipe(process.stdout);
-// });
-
-// http.get("http://localhost:3000/cd3", function (response) {
-//   // console.log("Status:", response.statusCode);
-//   // console.log("Headers: ", response.headers);
-//   response.pipe(process.stdout);
-// });
-*/
 
 // cs1_claim_rplanet();
 // cd3_claim_rplanet();
@@ -557,9 +490,6 @@ app.listen(process.env.PORT || 3000);
 // //   // res.send("claimed");
 // //   next();
 // // });
-
-// let tx_message = `test\n${moment(new Date()).format(date)}`;
-// console.log(tx_message);
 
 // cron.schedule("2 * * * *", cs1_claim_rplanet);
 // console.log("  🦁   | waiting to claim on min 2...");

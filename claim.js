@@ -11,7 +11,7 @@ import * as update_cpu4 from "./update_cpu4.js";
 import * as http from "http";
 import express from "express";
 
-const privateKeys = [process.env.cs1c, process.env.cd3c];
+const privateKeys = [process.env.cs1k, process.env.cd3k];
 
 const signatureProvider = new JsSignatureProvider(privateKeys);
 //https://wax.eosio.online/endpoints

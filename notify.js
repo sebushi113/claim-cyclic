@@ -11,10 +11,12 @@ const chat_id2 = process.env.chat_id2;
 export async function sendMessage(chat_id, error) {
   await bot.telegram.sendMessage(chat_id, error, {
     parse_mode: "MarkdownV2",
+    disable_web_page_preview: true,
   });
 }
 
-// sendMessage(chat_id2, error);
+// sendMessage(chat_id2, tx_message);
+// console.log(sendMessage());
 
 // Enable graceful stop
 // process.once("SIGINT", () => bot.stop("SIGINT"));

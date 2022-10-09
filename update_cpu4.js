@@ -269,7 +269,7 @@ async function get_cs1_voter_info() {
 async function update(cpu4_cs1_deposit, cpu4_cd3_deposit) {
   try {
     const auth = new google.auth.GoogleAuth({
-      keyFile: "credentials.json",
+      keyFile: keyFile,
       scopes: "https://www.googleapis.com/auth/spreadsheets",
     });
 
@@ -312,7 +312,7 @@ async function update(cpu4_cs1_deposit, cpu4_cd3_deposit) {
 async function append(cpu4_cs1_deposit, cpu4_cd3_deposit, cs1_staked) {
   try {
     const auth = new google.auth.GoogleAuth({
-      keyFile: "credentials.json",
+      keyFile: process.env.keyFile,
       scopes: "https://www.googleapis.com/auth/spreadsheets",
     });
 

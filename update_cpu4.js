@@ -269,7 +269,7 @@ async function get_cs1_voter_info() {
 async function update(cpu4_cs1_deposit, cpu4_cd3_deposit) {
   try {
     const auth = new google.auth.GoogleAuth({
-      keyFile: keyFile,
+      keyFile: process.env.keyFile,
       scopes: "https://www.googleapis.com/auth/spreadsheets",
     });
 

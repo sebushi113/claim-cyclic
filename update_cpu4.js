@@ -19,6 +19,7 @@ const cd3p = process.env.cd3p;
 const privateKeys = [process.env.cs1k, process.env.cd3k];
 const signatureProvider = new JsSignatureProvider(privateKeys);
 
+// test
 // endpoints https://wax.eosio.online/endpoints
 // const rpc = new JsonRpc("https://wax.greymass.com/", { fetch });
 const rpc = new JsonRpc("http://wax.api.eosnation.io/", { fetch });

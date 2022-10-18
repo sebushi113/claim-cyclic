@@ -105,9 +105,7 @@ export async function all_claim_greenrabbit() {
   }
 }
 
-all_claim_greenrabbit();
-
-async function all_withdraw_greenrabbit() {
+export async function all_withdraw_greenrabbit() {
   try {
     const transaction = await api.transact(
       {

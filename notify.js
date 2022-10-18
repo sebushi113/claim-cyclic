@@ -8,7 +8,7 @@ const chat_id2 = process.env.chat_id2;
 // const message = "error: *claim experienced an error*";
 // const error = "error";
 
-export default async function sendMessage(chat_id, message) {
+export async function sendMessage(chat_id, message) {
   await bot.telegram.sendMessage(chat_id, message, {
     parse_mode: "HTML",
     disable_web_page_preview: true,

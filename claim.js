@@ -86,6 +86,7 @@ export async function all_claim_greenrabbit() {
       "assertion failure with message: nothing to claim just yet"
     ) {
       console.log(" ✅✅  | nothing to claim, waiting...");
+      return;
     } else if (
       error.message ==
       "estimated CPU time (0 us) is not less than the maximum billable CPU time for the transaction (0 us)"

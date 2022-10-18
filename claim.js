@@ -29,7 +29,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function all_claim_greenrabbit() {
+export async function all_claim_greenrabbit() {
   // while (true) {
   try {
     const transaction = await api.transact(

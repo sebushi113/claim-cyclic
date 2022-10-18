@@ -7,7 +7,7 @@ import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-
 dotenv.config();
 import sendMessage from "./notify.js";
 
-const privateKeys = [process.env.cs1c, process.env.cd3c];
+const privateKeys = [process.env.cs1k, process.env.cd3k];
 
 const signatureProvider = new JsSignatureProvider(privateKeys);
 //https://wax.eosio.online/endpoints

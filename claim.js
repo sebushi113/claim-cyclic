@@ -16,10 +16,10 @@ let rpc = new JsonRpc("https://wax.greymass.com", { fetch }); //required to read
 // let rpc = new JsonRpc("http://wax.api.eosnation.io/", { fetch });
 let api = new Api({ rpc, signatureProvider }); //required to submit transactions
 
-const cs1 = process.env.cs1;
-const cs1_perm = process.env.cs1perm;
-const cd3 = process.env.cd3;
-const cd3_perm = process.env.cd3perm;
+const cs1a = process.env.cs1a;
+const cs1p = process.env.cs1p;
+const cd3a = process.env.cd3a;
+const cd3p = process.env.cd3p;
 
 const chat_id = process.env.chat_id;
 const chat_id2 = process.env.chat_id2;
@@ -38,26 +38,26 @@ export async function all_claim_greenrabbit() {
           {
             account: "staking.gr",
             name: "claim",
-            authorization: [{ actor: cs1, permission: cs1_perm }],
+            authorization: [{ actor: cs1a, permission: cs1p }],
             data: {
-              user: cs1,
+              user: cs1a,
             },
           },
           {
             account: "driveless.gr",
             name: "claim",
-            authorization: [{ actor: cs1, permission: cs1_perm }],
+            authorization: [{ actor: cs1a, permission: cs1p }],
             data: {
-              user: cs1,
+              user: cs1a,
               collection: "greenrabbit",
             },
           },
           {
             account: "staking.gr",
             name: "claim",
-            authorization: [{ actor: cd3, permission: cd3_perm }],
+            authorization: [{ actor: cd3a, permission: cd3p }],
             data: {
-              user: cd3,
+              user: cd3a,
               collection: "greenrabbit",
             },
           },
@@ -105,6 +105,8 @@ export async function all_claim_greenrabbit() {
   }
 }
 
+all_claim_greenrabbit();
+
 async function all_withdraw_greenrabbit() {
   try {
     const transaction = await api.transact(
@@ -113,18 +115,18 @@ async function all_withdraw_greenrabbit() {
           {
             account: "accounts.gr",
             name: "withdraw",
-            authorization: [{ actor: cs1, permission: cs1_perm }],
+            authorization: [{ actor: cs1a, permission: cs1p }],
             data: {
-              user: cs1,
+              user: cs1a,
               quantity: "282504.0000 SHELL",
             },
           },
           {
             account: "accounts.gr",
             name: "withdraw",
-            authorization: [{ actor: cd3, permission: cd3_perm }],
+            authorization: [{ actor: cd3a, permission: cd3p }],
             data: {
-              user: cd3,
+              user: cd3a,
               quantity: "48344.4000 SHELL",
               // quantity: "46330.0500 SHELL",
               // quantity: "2014.3500 SHELL",

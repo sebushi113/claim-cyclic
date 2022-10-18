@@ -3,6 +3,7 @@ import moment from "moment";
 import * as claim from "./claim.js";
 
 const app = express();
+const date = "YYYY-MM-DD HH:mm:ss";
 
 app.all("/gr-claim", async (req, res) => {
   console.time("gr-claim");

@@ -7,16 +7,16 @@ const date = "YYYY-MM-DD HH:mm:ss";
 
 app.all("/gr-claim", async (req, res) => {
   console.time("gr-claim");
-  res.write("claiming green rabbit...");
+  // res.write("claiming green rabbit...");
   console.log(moment(new Date()).format(date) + " | gr-claim started");
   await claim.all_claim_greenrabbit();
   // await claim.all_withdraw_greenrabbit();
   console.log(moment(new Date()).format(date) + " | gr-claim finished");
   console.timeEnd("gr-claim");
 
-  res.write("green rabbit claimed");
+  res.send("green rabbit claimed");
   // res.write("claimed");
-  res.end;
+  // res.end;
 });
 
 app.all("/gr-withdraw", async (req, res) => {

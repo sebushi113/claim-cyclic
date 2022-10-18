@@ -126,6 +126,8 @@ async function all_withdraw_greenrabbit() {
             data: {
               user: cd3,
               quantity: "48344.4000 SHELL",
+              // quantity: "46330.0500 SHELL",
+              // quantity: "2014.3500 SHELL",
             },
           },
         ],

@@ -1,6 +1,6 @@
 import express from "express";
 import moment from "moment";
-import * as claim from "./claim";
+import * as claim from "./claim.js";
 
 const app = express();
 

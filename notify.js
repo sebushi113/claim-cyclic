@@ -8,21 +8,13 @@ const chat_id2 = process.env.chat_id2;
 // const message = "error: *claim experienced an error*";
 // const error = "error";
 
-export async function sendMessage(chat_id, error) {
-  await bot.telegram.sendMessage(chat_id, error, {
-    parse_mode: "MarkdownV2",
+export async function sendMessage(chat_id, message) {
+  await bot.telegram.sendMessage(chat_id, message, {
+    parse_mode: "HTML",
     disable_web_page_preview: true,
   });
+  console.log("\x1b[36m%s\x1b[0m", "message sent");
 }
 
 // sendMessage(chat_id2, tx_message);
 // console.log(sendMessage());
-
-// Enable graceful stop
-// process.once("SIGINT", () => bot.stop("SIGINT"));
-// process.once("SIGTERM", () => bot.stop("SIGTERM"));
-
-// exports.send = send;
-// module.exports = { send };
-// export function sendMessage()
-// export function send()

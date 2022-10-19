@@ -6,8 +6,8 @@ const app = express();
 const date = "YYYY-MM-DD HH:mm:ss";
 
 app.all("/gr-claim", async (req, res) => {
-  console.time("gr-claim");
   // res.write("claiming green rabbit...");
+  console.time("gr-claim");
   console.log(moment(new Date()).format(date) + " | gr-claim started");
   await claim.all_claim_greenrabbit();
   // await claim.all_withdraw_greenrabbit();
@@ -20,7 +20,7 @@ app.all("/gr-claim", async (req, res) => {
 });
 
 app.all("/gr-withdraw", async (req, res) => {
-  res.write("withdrawing green rabbit...");
+  // res.write("withdrawing green rabbit...");
   console.time("gr-withdraw");
   console.log(moment(new Date()).format(date) + " | gr-withdraw started");
   await all_withdraw_greenrabbit();

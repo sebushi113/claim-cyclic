@@ -6,6 +6,7 @@ import moment from "moment";
 import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 import sendMessage from "./notify.js";
+import * as cron from "node-cron";
 
 const privateKeys = [process.env.cs1k, process.env.cd3k];
 
@@ -65,8 +66,16 @@ export async function all_claim_greenrabbit() {
       },
       { useLastIrreversible: true, expireSeconds: 300 }
     );
-    let action =
-      transaction.processed.action_traces[0].inline_traces[0].act.name;
+    let account = transaction.processed.traces[0].act.account;
+    let action = transaction.processed.traces[0].act.name;
+
+    let trances_account = transaction.processed.traces[0].act.account;
+    let traces_action = transaction.processed.traces[0].act.name;
+    let traces_contract = transaction.processed.traces[0].act.data.contract;
+    let traces_quantity = transaction.processed.traces[0].act.data.quantity;
+
+    // let action =
+    //   transaction.processed.action_traces[0].inline_traces[0].act.name;
     let from =
       transaction.processed.action_traces[0].inline_traces[0].act.data.from;
     let to =
@@ -75,8 +84,8 @@ export async function all_claim_greenrabbit() {
       transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
     let tx = transaction.transaction_id;
     let time = moment(new Date()).format(date);
-    let message = `${time}\n<b>cyclic</b>\n\naction: ${action}\nfrom: ${from}\nto: ${to}\nquantity: ${quantity}\n\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
-    console.log("🦁🐵 " + tx);
+    let message = `${time}\n<b>cyclic</b>\n\naction: ${action}\naccount: ${account}\n\nfrom: ${from}\nto: ${to}\nquantity: ${quantity}\n\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
+    console.log("🦁🐵 c | " + tx);
     await sendMessage(chat_id2, message);
     await sleep(10000);
     await all_claim_greenrabbit();
@@ -85,18 +94,18 @@ export async function all_claim_greenrabbit() {
       error.message ==
       "assertion failure with message: nothing to claim just yet"
     ) {
-      console.log(" ✅✅  | nothing to claim, waiting...");
+      console.log(" ✅✅ c | nothing to claim, waiting...");
       return;
     } else if (
       error.message ==
       "estimated CPU time (0 us) is not less than the maximum billable CPU time for the transaction (0 us)"
     ) {
-      console.log(` 🦁🐵  | ${moment(new Date()).format(date)} | api error`);
+      console.log(` 🦁🐵 c | ${moment(new Date()).format(date)} | api error`);
       await api_error();
       await all_claim_greenrabbit();
     } else {
       console.log(
-        ` 🦁🐵  | ${moment(new Date()).format(date)} | unknown error`
+        ` 🦁🐵 c | ${moment(new Date()).format(date)} | unknown error`
       );
       console.log(error);
       await unknown_error();
@@ -147,30 +156,30 @@ export async function all_withdraw_greenrabbit() {
     let time = moment(new Date()).format(date);
     let message = `${time}\n<b>cyclic</b>\n\naction: ${action}\nfrom: ${from}\nto: ${to}\nquantity: ${quantity}\n\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     // \n<code>cd3d:  ${cpu4_cd3d}</code>
-    console.log("🦁🐵 " + tx);
+    console.log("🦁🐵 w | " + tx);
     await sendMessage(chat_id2, message);
     await sleep(10000);
-    await all_claim_greenrabbit();
+    await all_withdraw_greenrabbit();
   } catch (error) {
     if (
       error.message ==
       "assertion failure with message: nothing to claim just yet"
     ) {
-      console.log(" ✅✅  | nothing to claim, waiting...");
+      console.log(" ✅✅ w | nothing to claim, waiting...");
     } else if (
       error.message ==
       "estimated CPU time (0 us) is not less than the maximum billable CPU time for the transaction (0 us)"
     ) {
-      console.log(` 🦁🐵  | ${moment(new Date()).format(date)} | api error`);
+      console.log(` 🦁🐵 w | ${moment(new Date()).format(date)} | api error`);
       await api_error();
-      await all_claim_greenrabbit();
+      await all_withdraw_greenrabbit();
     } else {
       console.log(
-        ` 🦁🐵  | ${moment(new Date()).format(date)} | unknown error`
+        ` 🦁🐵 w | ${moment(new Date()).format(date)} | unknown error`
       );
       console.log(error);
       await unknown_error();
-      await all_claim_greenrabbit();
+      await all_withdraw_greenrabbit();
     }
   }
 }
@@ -265,3 +274,6 @@ console.log(" rpc  | " + rpc.endpoint);
 // //   res.send("green rabbit withdrawn");
 // // });
 // app.listen(process.env.PORT || 3000);
+
+// cron.schedule("30 02 18 * * */1", all_claim_greenrabbit);
+// console.log(" 🦁🐵  | waiting to claim at 17:00:00...");

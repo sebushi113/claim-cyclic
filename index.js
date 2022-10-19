@@ -23,7 +23,7 @@ app.all("/gr-withdraw", async (req, res) => {
   // res.write("withdrawing green rabbit...");
   console.time("gr-withdraw");
   console.log(moment(new Date()).format(date) + " | gr-withdraw started");
-  await all_withdraw_greenrabbit();
+  await claim.all_withdraw_greenrabbit();
   console.log(moment(new Date()).format(date) + " | gr-withdraw finished");
   console.timeEnd("gr-withdraw");
 

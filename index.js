@@ -5,28 +5,27 @@ import * as claim from "./claim.js";
 const app = express();
 const date = "YYYY-MM-DD HH:mm:ss";
 
-app.all("/gr-claim", async (req, res) => {
+app.all("/claim-gr", async (req, res) => {
   // res.write("claiming green rabbit...");
-  console.time("gr-claim");
-  console.log(moment(new Date()).format(date) + " | gr-claim started");
-  await claim.all_claim_greenrabbit();
-  // await claim.all_withdraw_greenrabbit();
-  console.log(moment(new Date()).format(date) + " | gr-claim finished");
-  console.timeEnd("gr-claim");
-
+  console.time("claim-gr");
+  console.log(moment(new Date()).format(date) + " | claim-gr started");
+  await claim.cs1_claim_gr();
+  await claim.cd3_claim_gr();
+  console.log(moment(new Date()).format(date) + " | claim-gr finished");
+  console.timeEnd("claim-gr");
   res.send("green rabbit claimed");
   // res.write("claimed");
   // res.end;
 });
 
-app.all("/gr-withdraw", async (req, res) => {
+app.all("/withdraw-gr", async (req, res) => {
   // res.write("withdrawing green rabbit...");
-  console.time("gr-withdraw");
-  console.log(moment(new Date()).format(date) + " | gr-withdraw started");
-  await claim.all_withdraw_greenrabbit();
-  console.log(moment(new Date()).format(date) + " | gr-withdraw finished");
-  console.timeEnd("gr-withdraw");
-
+  console.time("withdraw-gr");
+  console.log(moment(new Date()).format(date) + " | withdraw-gr started");
+  await claim.cs1_withdraw_gr();
+  await claim.cd3_withdraw_gr();
+  console.log(moment(new Date()).format(date) + " | withdraw-gr finished");
+  console.timeEnd("withdraw-gr");
   res.send("green rabbit withdrawn");
 });
 app.listen(process.env.PORT || 3000);

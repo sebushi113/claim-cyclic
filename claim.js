@@ -180,11 +180,8 @@ export async function all_withdraw_gr() {
     await sleep(5000);
     await all_withdraw_gr();
   } catch (error) {
-    if (
-      error.message ==
-      "assertion failure with message: nothing to claim just yet"
-    ) {
-      console.log(" ✅✅ w | nothing to claim, waiting...");
+    if (error.message == "assertion failure with message: overdrawn balance") {
+      console.log(" ✅✅ w | not enough to withdraw, waiting...");
       return;
     } else if (
       error.message ==
@@ -239,7 +236,6 @@ export async function cs1_claim_gr() {
     // console.log("transaction.processed;");
     // console.log(transaction.processed);
     // console.log("transaction.processed.action_traces");
-    // console.log(transaction.processed.action_traces);
     // console.log("transaction.processed.action_traces[0]");
     // console.log(transaction.processed.action_traces[0]);
     // let account = transaction.processed.action_traces[0].act.account;
@@ -248,6 +244,14 @@ export async function cs1_claim_gr() {
     // let action = transaction.processed.action_traces[0].act.name;
     // console.log("action");
     // console.log(action);
+    // let ats = transaction.processed.action_traces;
+    // for (let at of ats) {
+    //   console.log(at.act.account);
+    //   console.log(at.act.name);
+    //   console.log(at.act.data.user);
+    //   console.log(at.act.data.collection);
+    //   console.log(at.inline_traces[0].act.data.quantity);
+    // }
 
     // console.log("transaction.processed.action_traces[0].inline_traces[0]");
     // console.log(transaction.processed.action_traces[0].inline_traces[0]);
@@ -289,7 +293,7 @@ export async function cs1_claim_gr() {
     } else {
       console.log(` 🦁 c | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
-      let error_message = error.message;
+      let error_message = `🦁 w | cs1_claim_gr\n${error.message}`;
       await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await cs1_claim_gr();
@@ -371,7 +375,7 @@ export async function cd3_claim_gr() {
     } else {
       console.log(` 🐵 c | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
-      let error_message = error.message;
+      let error_message = `🐵 w | cd3_claim_gr\n${error.message}`;
       await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await cd3_claim_gr();
@@ -420,11 +424,8 @@ export async function cs1_withdraw_gr() {
     await sleep(5000);
     await cs1_withdraw_gr();
   } catch (error) {
-    if (
-      error.message ==
-      "assertion failure with message: nothing to claim just yet"
-    ) {
-      console.log(" 🦁✅ w | nothing to claim, waiting...");
+    if (error.message == "assertion failure with message: overdrawn balance") {
+      console.log(" 🦁✅ w | not enough to withdraw, waiting...");
       return;
     } else if (
       error.message ==
@@ -437,7 +438,7 @@ export async function cs1_withdraw_gr() {
     } else {
       console.log(` 🦁 w | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
-      let error_message = error.message;
+      let error_message = `🦁 w | cs1_withdraw_gr\n${error.message}`;
       await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await cs1_withdraw_gr();
@@ -486,11 +487,8 @@ export async function cd3_withdraw_gr() {
     await sleep(5000);
     await cd3_withdraw_gr();
   } catch (error) {
-    if (
-      error.message ==
-      "assertion failure with message: nothing to claim just yet"
-    ) {
-      console.log(" 🐵✅ w | nothing to claim, waiting...");
+    if (error.message == "assertion failure with message: overdrawn balance") {
+      console.log(" 🐵✅ w | not enough to withdraw, waiting...");
       return;
     } else if (
       error.message ==
@@ -503,7 +501,7 @@ export async function cd3_withdraw_gr() {
     } else {
       console.log(` 🐵 w | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
-      let error_message = error.message;
+      let error_message = `🐵 w | cd3_withdraw_gr\n${error.message}`;
       await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await cd3_withdraw_gr();

@@ -15,7 +15,6 @@ app.all("/claim-gr", async (req, res) => {
   await claim.cd3_claim_gr();
   console.log(moment(new Date()).format(date) + " | claim-gr finished");
   console.timeEnd("claim_gr");
-  await sendMessage(chat_id2, claim_gr);
   res.send("green rabbit claimed");
   // res.write("claimed");
   // res.end;

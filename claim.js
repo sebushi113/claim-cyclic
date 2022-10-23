@@ -281,17 +281,17 @@ export async function cs1_claim_gr() {
       error.message ==
       "assertion failure with message: nothing to claim just yet"
     ) {
-      console.log(" 🦁✅ c | nothing to claim, waiting...");
+      console.log("🦁✅ c | nothing to claim, waiting...");
       return;
     } else if (
       error.message ==
       "estimated CPU time (0 us) is not less than the maximum billable CPU time for the transaction (0 us)"
     ) {
-      console.log(` 🦁 c | ${moment(new Date()).format(date)} | api error`);
+      console.log(`🦁 c | ${moment(new Date()).format(date)} | api error`);
       await api_error();
       await cs1_claim_gr();
     } else {
-      console.log(` 🦁 c | ${moment(new Date()).format(date)} | unknown error`);
+      console.log(`🦁 c | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
       let error_message = `🦁 w | cs1_claim_gr\n${error.message}`;
       await sendMessage(chat_id, error_message);
@@ -363,17 +363,17 @@ export async function cd3_claim_gr() {
       error.message ==
       "assertion failure with message: nothing to claim just yet"
     ) {
-      console.log(" 🐵✅ c | nothing to claim, waiting...");
+      console.log("🐵✅ c | nothing to claim, waiting...");
       return;
     } else if (
       error.message ==
       "estimated CPU time (0 us) is not less than the maximum billable CPU time for the transaction (0 us)"
     ) {
-      console.log(` 🐵 c | ${moment(new Date()).format(date)} | api error`);
+      console.log(`🐵 c | ${moment(new Date()).format(date)} | api error`);
       await api_error();
       await cd3_claim_gr();
     } else {
-      console.log(` 🐵 c | ${moment(new Date()).format(date)} | unknown error`);
+      console.log(`🐵 c | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
       let error_message = `🐵 w | cd3_claim_gr\n${error.message}`;
       await sendMessage(chat_id, error_message);
@@ -425,18 +425,18 @@ export async function cs1_withdraw_gr() {
     await cs1_withdraw_gr();
   } catch (error) {
     if (error.message == "assertion failure with message: overdrawn balance") {
-      console.log(" 🦁✅ w | not enough to withdraw, waiting...");
+      console.log("🦁✅ w | not enough to withdraw, waiting...");
       return;
     } else if (
       error.message ==
       "estimated CPU time (0 us) is not less than the maximum billable CPU time for the transaction (0 us)"
     ) {
-      console.log(` 🦁 w | ${moment(new Date()).format(date)} | api error`);
+      console.log(`🦁 w | ${moment(new Date()).format(date)} | api error`);
       await api_error();
       await sleep(5000);
       await cs1_withdraw_gr();
     } else {
-      console.log(` 🦁 w | ${moment(new Date()).format(date)} | unknown error`);
+      console.log(`🦁 w | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
       let error_message = `🦁 w | cs1_withdraw_gr\n${error.message}`;
       await sendMessage(chat_id, error_message);
@@ -488,18 +488,18 @@ export async function cd3_withdraw_gr() {
     await cd3_withdraw_gr();
   } catch (error) {
     if (error.message == "assertion failure with message: overdrawn balance") {
-      console.log(" 🐵✅ w | not enough to withdraw, waiting...");
+      console.log("🐵✅ w | not enough to withdraw, waiting...");
       return;
     } else if (
       error.message ==
       "estimated CPU time (0 us) is not less than the maximum billable CPU time for the transaction (0 us)"
     ) {
-      console.log(` 🐵 w | ${moment(new Date()).format(date)} | api error`);
+      console.log(`🐵 w | ${moment(new Date()).format(date)} | api error`);
       await api_error();
       await sleep(5000);
       await cd3_withdraw_gr();
     } else {
-      console.log(` 🐵 w | ${moment(new Date()).format(date)} | unknown error`);
+      console.log(`🐵 w | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
       let error_message = `🐵 w | cd3_withdraw_gr\n${error.message}`;
       await sendMessage(chat_id, error_message);

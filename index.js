@@ -22,7 +22,7 @@ app.all("/claim-gr", async (req, res) => {
   console.log(`claim-gr: ${totalTime}`);
   let tx_message = `${cs1_claim_gr}\n\n${cd3_claim_gr}\n\nclaim-gr: ${totalTime}ms`;
   await sendMessage(chat_id2, tx_message);
-  res.send("green rabbit claimed");
+  res.send("green rabbit claimed\n" + totalTime);
   // res.write("claimed");
   // res.end;
 });
@@ -41,7 +41,7 @@ app.all("/withdraw-gr", async (req, res) => {
   console.log(`withdraw-gr: ${totalTime}`);
   let tx_message = `${cs1_withdraw_gr}\n\n${cd3_withdraw_gr}\n\nwithdraw-gr: ${totalTime}ms`;
   await sendMessage(chat_id2, tx_message); // console.timeEnd("withdraw-gr");
-  res.send("green rabbit withdrawn");
+  res.send("green rabbit withdrawn\n" + totalTime);
 });
 
 app.listen(process.env.PORT || 3000);

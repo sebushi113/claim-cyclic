@@ -523,4 +523,4 @@ async function api_error() {
   await sendMessage(chat_id, api_error_message);
 }
 
-console.log(" rpc  | " + rpc.endpoint);
+console.log(" rpc | " + rpc.endpoint);

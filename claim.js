@@ -273,7 +273,8 @@ export async function cs1_claim_gr() {
 
     let time = moment(new Date()).format(date);
     let message = `${time}\n\naccount: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\ncollection: ${at_data_collection}\nquantity: ${it_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>\n\ncyclic`;
-    await sendMessage(chat_id2, message);
+    return message;
+    // await sendMessage(chat_id2, message);
     await sleep(5000);
     await cs1_claim_gr();
   } catch (error) {
@@ -355,7 +356,8 @@ export async function cd3_claim_gr() {
 
     let time = moment(new Date()).format(date);
     let message = `${time}\n\naccount: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\ncollection: ${at_data_collection}\nquantity: ${it_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>\n\ncyclic`;
-    await sendMessage(chat_id2, message);
+    return message;
+    // await sendMessage(chat_id2, message);
     await sleep(5000);
     await cd3_claim_gr();
   } catch (error) {
@@ -420,7 +422,8 @@ export async function cs1_withdraw_gr() {
     //   transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
     let time = moment(new Date()).format(date);
     let message = `${time}\n\naccount: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\nquantity: ${at_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>\n\ncyclic`;
-    await sendMessage(chat_id2, message);
+    return message;
+    // await sendMessage(chat_id2, message);
     await sleep(5000);
     await cs1_withdraw_gr();
   } catch (error) {
@@ -483,7 +486,8 @@ export async function cd3_withdraw_gr() {
     //   transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
     let time = moment(new Date()).format(date);
     let message = `${time}\n\naccount: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\nquantity: ${at_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>\n\ncyclic`;
-    await sendMessage(chat_id2, message);
+    return message;
+    // await sendMessage(chat_id2, message);
     await sleep(5000);
     await cd3_withdraw_gr();
   } catch (error) {
@@ -523,4 +527,4 @@ async function api_error() {
   await sendMessage(chat_id, api_error_message);
 }
 
-console.log(" rpc | " + rpc.endpoint);
+console.log("rpc  | " + rpc.endpoint);

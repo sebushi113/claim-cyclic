@@ -17,11 +17,11 @@ app.all("/claim-gr", async (req, res) => {
   console.log("claim-gr finished");
   let endTime = performance.now();
   let totalTime = (endTime - startTime).toFixed(3);
-  console.log(`claim-gr: ${totalTime}`);
+  console.log(`claim-gr: ${totalTime}ms`);
   let time = moment(new Date()).format(date);
   let tx_message = `${time}\n\n${cs1_claim_gr}\n\n${cd3_claim_gr}\n\ncyclic: ${totalTime}ms`;
   await sendMessage(chat_id2, tx_message);
-  res.send("green rabbit claimed\n" + totalTime);
+  res.send(`green rabbit claimed<br/>${totalTime}ms`);
 });
 
 app.all("/withdraw-gr", async (req, res) => {
@@ -32,11 +32,11 @@ app.all("/withdraw-gr", async (req, res) => {
   console.log("withdraw-gr finished");
   let endTime = performance.now();
   let totalTime = (endTime - startTime).toFixed(3);
-  console.log(`withdraw-gr: ${totalTime}`);
+  console.log(`withdraw-gr: ${totalTime}ms`);
   let time = moment(new Date()).format(date);
   let tx_message = `${time}\n\n${cs1_withdraw_gr}\n\n${cd3_withdraw_gr}\n\ncyclic: ${totalTime}ms`;
   await sendMessage(chat_id2, tx_message);
-  res.send("green rabbit withdrawn\n" + totalTime);
+  res.send(`green rabbit withdrawn<br/>${totalTime}ms`);
 });
 
 app.use(bodyParser.json());

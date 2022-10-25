@@ -9,44 +9,44 @@ import sendMessage from "./notify.js";
 import bodyParser from "body-parser";
 const chat_id2 = process.env.chat_id2;
 
-app.all("/claim-gr", async (req, res) => {
-  // res.write("claiming green rabbit...");
-  // let claim_gr = "time taken";
-  // console.time(claim_gr);
-  let startTime = performance.now();
-  console.log("claim-gr started");
-  let cs1_claim_gr = await claim.cs1_claim_gr();
-  let cd3_claim_gr = await claim.cd3_claim_gr();
-  console.log("claim-gr finished");
-  let endTime = performance.now();
-  // console.timeEnd(claim_gr);
-  let totalTime = endTime - startTime.toFixed(3);
-  console.log(`claim-gr: ${totalTime}`);
-  let time = moment(new Date()).format(date);
-  let tx_message = `${time}\n\n${cs1_claim_gr}\n\n${cd3_claim_gr}\n\ncyclic: ${totalTime}ms`;
-  await sendMessage(chat_id2, tx_message);
-  res.send("green rabbit claimed\n" + totalTime);
-  // res.write("claimed");
-  // res.end;
-});
+// app.all("/claim-gr", async (req, res) => {
+//   // res.write("claiming green rabbit...");
+//   // let claim_gr = "time taken";
+//   // console.time(claim_gr);
+//   let startTime = performance.now();
+//   console.log("claim-gr started");
+//   let cs1_claim_gr = await claim.cs1_claim_gr();
+//   let cd3_claim_gr = await claim.cd3_claim_gr();
+//   console.log("claim-gr finished");
+//   let endTime = performance.now();
+//   // console.timeEnd(claim_gr);
+//   let totalTime = endTime - startTime.toFixed(3);
+//   console.log(`claim-gr: ${totalTime}`);
+//   let time = moment(new Date()).format(date);
+//   let tx_message = `${time}\n\n${cs1_claim_gr}\n\n${cd3_claim_gr}\n\ncyclic: ${totalTime}ms`;
+//   await sendMessage(chat_id2, tx_message);
+//   res.send("green rabbit claimed\n" + totalTime);
+//   // res.write("claimed");
+//   // res.end;
+// });
 
-app.all("/withdraw-gr", async (req, res) => {
-  // res.write("withdrawing green rabbit...");
-  // console.time("withdraw-gr");
-  let startTime = performance.now();
-  console.log("withdraw-gr started");
-  let cs1_withdraw_gr = await claim.cs1_withdraw_gr();
-  let cd3_withdraw_gr = await claim.cd3_withdraw_gr();
-  console.log("withdraw-gr finished");
-  let endTime = performance.now();
-  // console.timeEnd(claim_gr);
-  let totalTime = endTime - startTime.toFixed(3);
-  console.log(`withdraw-gr: ${totalTime}`);
-  let time = moment(new Date()).format(date);
-  let tx_message = `${time}\n\n${cs1_withdraw_gr}\n\n${cd3_withdraw_gr}\n\ncyclic: ${totalTime}ms`;
-  await sendMessage(chat_id2, tx_message); // console.timeEnd("withdraw-gr");
-  res.send("green rabbit withdrawn\n" + totalTime);
-});
+// app.all("/withdraw-gr", async (req, res) => {
+//   // res.write("withdrawing green rabbit...");
+//   // console.time("withdraw-gr");
+//   let startTime = performance.now();
+//   console.log("withdraw-gr started");
+//   let cs1_withdraw_gr = await claim.cs1_withdraw_gr();
+//   let cd3_withdraw_gr = await claim.cd3_withdraw_gr();
+//   console.log("withdraw-gr finished");
+//   let endTime = performance.now();
+//   // console.timeEnd(claim_gr);
+//   let totalTime = endTime - startTime.toFixed(3);
+//   console.log(`withdraw-gr: ${totalTime}`);
+//   let time = moment(new Date()).format(date);
+//   let tx_message = `${time}\n\n${cs1_withdraw_gr}\n\n${cd3_withdraw_gr}\n\ncyclic: ${totalTime}ms`;
+//   await sendMessage(chat_id2, tx_message); // console.timeEnd("withdraw-gr");
+//   res.send("green rabbit withdrawn\n" + totalTime);
+// });
 
 app.use(bodyParser.json());
 

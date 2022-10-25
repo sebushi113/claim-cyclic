@@ -50,7 +50,7 @@ app.all("/withdraw-gr", async (req, res) => {
 
 app.use(bodyParser.json());
 
-// curl -i cyclic-blue-odd-salamander-us-east-1/myFile.txt
+// curl -i some-app.cyclic.app/myFile.txt
 app.get("*", async (req, res) => {
   let filename = req.path.slice(1);
 
@@ -76,6 +76,7 @@ app.get("*", async (req, res) => {
 });
 
 // curl -i -XPUT --data '{"k1":"value 1", "k2": "value 2"}' -H 'Content-type: application/json' https://some-app.cyclic.app/myFile.txt
+
 app.put("*", async (req, res) => {
   let filename = req.path.slice(1);
 

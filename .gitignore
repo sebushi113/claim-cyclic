@@ -1,3 +1,5 @@
 *.env
 node_modules
 .unused
+# ignore all logs
+*.log

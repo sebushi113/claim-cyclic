@@ -11,13 +11,13 @@ const chat_id2 = process.env.chat_id2;
 
 app.all("/claim-gr", async (req, res) => {
   let startTime = performance.now();
-  console.log("claim-gr started");
+  console.log("claimm-gr started");
   let cs1_claim_gr = await claim.cs1_claim_gr();
   let cd3_claim_gr = await claim.cd3_claim_gr();
-  console.log("claim-gr finished");
+  console.log("claimm-gr finished");
   let endTime = performance.now();
   let totalTime = (endTime - startTime).toFixed(3);
-  console.log(`claim-gr: ${totalTime}ms`);
+  console.log(`claimm-gr: ${totalTime}ms`);
   let time = moment(new Date()).format(date);
   let tx_message = `${time}\n\n${cs1_claim_gr}\n\n${cd3_claim_gr}\n\ncyclic: ${totalTime}ms`;
   await sendMessage(chat_id2, tx_message);

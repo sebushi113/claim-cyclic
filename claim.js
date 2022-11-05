@@ -66,22 +66,6 @@ export async function all_claim_gr() {
     );
     let tx = transaction.transaction_id;
     console.log("🦁🐵 c | " + tx);
-    // console.log(transaction);
-    // console.log("transaction.processed;");
-    // console.log(transaction.processed);
-    // console.log("transaction.processed.action_traces");
-    // console.log(transaction.processed.action_traces);
-    // console.log("transaction.processed.action_traces[0]");
-    // console.log(transaction.processed.action_traces[0]);
-    // let account = transaction.processed.action_traces[0].act.account;
-    // console.log("account");
-    // console.log(account);
-    // let action = transaction.processed.action_traces[0].act.name;
-    // console.log("action");
-    // console.log(action);
-
-    // console.log("transaction.processed.action_traces[0].inline_traces[0]");
-    // console.log(transaction.processed.action_traces[0].inline_traces[0]);
     let at_account = transaction.processed.action_traces[0].act.account;
     let at_name = transaction.processed.action_traces[0].act.name;
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
@@ -422,12 +406,6 @@ export async function cd3_withdraw_gr() {
     }
   }
 }
-
-// async function successful_tx() {
-//   let tx = transaction.transaction_id;
-//   console.log(tx);
-//   await sendMessage(chat_id, tx);
-// }
 
 async function api_error() {
   rpc = new JsonRpc("http://wax.api.eosnation.io", { fetch });

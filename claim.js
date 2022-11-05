@@ -87,23 +87,18 @@ export async function all_claim_gr() {
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_collection =
       transaction.processed.action_traces[0].act.data.collection;
-    // let it_account =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.account;
-    // let it_name =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.name;
-    // let it_data_contract =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.contract;
-    // let it_data_user =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.user;
     let it_data_quantity =
       transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
 
     // let time = moment(new Date()).format(date);
     let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\ncollection: ${at_data_collection}\nquantity: ${it_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
-    await sendMessage(chat_id2, message);
+    await sendMessage(chat_id, message);
     await sleep(5000);
     await all_claim_gr();
   } catch (error) {
+    let error_message = `all_claim_gr\n${error.message}`;
+    console.log(error_message);
+    await sendMessage(chat_id, error_message);
     if (
       error.message ==
       "assertion failure with message: nothing to claim just yet"
@@ -122,8 +117,6 @@ export async function all_claim_gr() {
         ` 🦁🐵 c | ${moment(new Date()).format(date)} | unknown error`
       );
       console.log(error);
-      let error_message = error.message;
-      await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await all_claim_gr();
     }
@@ -164,22 +157,14 @@ export async function all_withdraw_gr() {
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_quantity =
       transaction.processed.action_traces[0].act.data.quantity;
-    // let it_account =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.account;
-    // let it_name =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.name;
-    // let it_data_contract =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.contract;
-    // let it_data_user =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.user;
-    // let it_data_quantity =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
-    // let time = moment(new Date()).format(date);
     let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\nquantity: ${at_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
-    await sendMessage(chat_id2, message);
+    await sendMessage(chat_id, message);
     await sleep(5000);
     await all_withdraw_gr();
   } catch (error) {
+    let error_message = `all_withdraw_gr\n${error.message}`;
+    console.log(error_message);
+    await sendMessage(chat_id, error_message);
     if (error.message == "assertion failure with message: overdrawn balance") {
       console.log(" ✅✅ w | not enough to withdraw, waiting...");
       return;
@@ -196,8 +181,6 @@ export async function all_withdraw_gr() {
         ` 🦁🐵 w | ${moment(new Date()).format(date)} | unknown error`
       );
       console.log(error);
-      let error_message = error.message;
-      await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await all_withdraw_gr();
     }
@@ -232,52 +215,24 @@ export async function cs1_claim_gr() {
     );
     let tx = transaction.transaction_id;
     console.log("🦁 c | " + tx);
-    // console.log(transaction);
-    // console.log("transaction.processed;");
-    // console.log(transaction.processed);
-    // console.log("transaction.processed.action_traces");
-    // console.log("transaction.processed.action_traces[0]");
-    // console.log(transaction.processed.action_traces[0]);
-    // let account = transaction.processed.action_traces[0].act.account;
-    // console.log("account");
-    // console.log(account);
-    // let action = transaction.processed.action_traces[0].act.name;
-    // console.log("action");
-    // console.log(action);
-    // let ats = transaction.processed.action_traces;
-    // for (let at of ats) {
-    //   console.log(at.act.account);
-    //   console.log(at.act.name);
-    //   console.log(at.act.data.user);
-    //   console.log(at.act.data.collection);
-    //   console.log(at.inline_traces[0].act.data.quantity);
-    // }
-
-    // console.log("transaction.processed.action_traces[0].inline_traces[0]");
-    // console.log(transaction.processed.action_traces[0].inline_traces[0]);
     let at_account = transaction.processed.action_traces[0].act.account;
     let at_name = transaction.processed.action_traces[0].act.name;
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_collection =
       transaction.processed.action_traces[0].act.data.collection;
-    // let it_account =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.account;
-    // let it_name =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.name;
-    // let it_data_contract =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.contract;
-    // let it_data_user =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.user;
     let it_data_quantity =
       transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
 
     // let time = moment(new Date()).format(date);
     let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\ncollection: ${at_data_collection}\nquantity: ${it_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
-    // await sendMessage(chat_id2, message);
+    // await sendMessage(chat_id, message);
     await sleep(5000);
     await cs1_claim_gr();
   } catch (error) {
+    let error_message = `🦁 w | cs1_claim_gr\n${error.message}`;
+    console.log(error_message);
+    await sendMessage(chat_id, error_message);
     if (
       error.message ==
       "assertion failure with message: nothing to claim just yet"
@@ -294,8 +249,6 @@ export async function cs1_claim_gr() {
     } else {
       console.log(`🦁 c | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
-      let error_message = `🦁 w | cs1_claim_gr\n${error.message}`;
-      await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await cs1_claim_gr();
     }
@@ -322,45 +275,24 @@ export async function cd3_claim_gr() {
     );
     let tx = transaction.transaction_id;
     console.log("🐵 c | " + tx);
-    // console.log(transaction);
-    // console.log("transaction.processed;");
-    // console.log(transaction.processed);
-    // console.log("transaction.processed.action_traces");
-    // console.log(transaction.processed.action_traces);
-    // console.log("transaction.processed.action_traces[0]");
-    // console.log(transaction.processed.action_traces[0]);
-    // let account = transaction.processed.action_traces[0].act.account;
-    // console.log("account");
-    // console.log(account);
-    // let action = transaction.processed.action_traces[0].act.name;
-    // console.log("action");
-    // console.log(action);
-
-    // console.log("transaction.processed.action_traces[0].inline_traces[0]");
-    // console.log(transaction.processed.action_traces[0].inline_traces[0]);
     let at_account = transaction.processed.action_traces[0].act.account;
     let at_name = transaction.processed.action_traces[0].act.name;
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_collection =
       transaction.processed.action_traces[0].act.data.collection;
-    // let it_account =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.account;
-    // let it_name =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.name;
-    // let it_data_contract =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.contract;
-    // let it_data_user =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.user;
     let it_data_quantity =
       transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
 
     // let time = moment(new Date()).format(date);
     let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\ncollection: ${at_data_collection}\nquantity: ${it_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
-    // await sendMessage(chat_id2, message);
+    // await sendMessage(chat_id, message);
     await sleep(5000);
     await cd3_claim_gr();
   } catch (error) {
+    let error_message = `🐵 w | cd3_claim_gr\n${error.message}`;
+    console.log(error_message);
+    await sendMessage(chat_id, error_message);
     if (
       error.message ==
       "assertion failure with message: nothing to claim just yet"
@@ -377,8 +309,6 @@ export async function cd3_claim_gr() {
     } else {
       console.log(`🐵 c | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
-      let error_message = `🐵 w | cd3_claim_gr\n${error.message}`;
-      await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await cd3_claim_gr();
     }
@@ -410,23 +340,15 @@ export async function cs1_withdraw_gr() {
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_quantity =
       transaction.processed.action_traces[0].act.data.quantity;
-    // let it_account =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.account;
-    // let it_name =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.name;
-    // let it_data_contract =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.contract;
-    // let it_data_user =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.user;
-    // let it_data_quantity =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
-    // let time = moment(new Date()).format(date);
     let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\nquantity: ${at_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
-    // await sendMessage(chat_id2, message);
+    // await sendMessage(chat_id, message);
     await sleep(5000);
     await cs1_withdraw_gr();
   } catch (error) {
+    let error_message = `🦁 w | cs1_withdraw_gr\n${error.message}`;
+    console.log(error_message);
+    await sendMessage(chat_id, error_message);
     if (error.message == "assertion failure with message: overdrawn balance") {
       console.log("🦁✅ w | not enough to withdraw, waiting...");
       return;
@@ -441,8 +363,6 @@ export async function cs1_withdraw_gr() {
     } else {
       console.log(`🦁 w | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
-      let error_message = `🦁 w | cs1_withdraw_gr\n${error.message}`;
-      await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await cs1_withdraw_gr();
     }
@@ -474,23 +394,15 @@ export async function cd3_withdraw_gr() {
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_quantity =
       transaction.processed.action_traces[0].act.data.quantity;
-    // let it_account =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.account;
-    // let it_name =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.name;
-    // let it_data_contract =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.contract;
-    // let it_data_user =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.user;
-    // let it_data_quantity =
-    //   transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
-    // let time = moment(new Date()).format(date);
     let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\nquantity: ${at_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
-    // await sendMessage(chat_id2, message);
+    // await sendMessage(chat_id, message);
     await sleep(5000);
     await cd3_withdraw_gr();
   } catch (error) {
+    let error_message = `🐵 w | cd3_withdraw_gr\n${error.message}`;
+    console.log(error_message);
+    await sendMessage(chat_id, error_message);
     if (error.message == "assertion failure with message: overdrawn balance") {
       console.log("🐵✅ w | not enough to withdraw, waiting...");
       return;
@@ -505,8 +417,6 @@ export async function cd3_withdraw_gr() {
     } else {
       console.log(`🐵 w | ${moment(new Date()).format(date)} | unknown error`);
       console.log(error);
-      let error_message = `🐵 w | cd3_withdraw_gr\n${error.message}`;
-      await sendMessage(chat_id, error_message);
       // await sleep(5000);
       // await cd3_withdraw_gr();
     }
@@ -516,7 +426,7 @@ export async function cd3_withdraw_gr() {
 // async function successful_tx() {
 //   let tx = transaction.transaction_id;
 //   console.log(tx);
-//   await sendMessage(chat_id2, tx);
+//   await sendMessage(chat_id, tx);
 // }
 
 async function api_error() {

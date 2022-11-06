@@ -22,10 +22,8 @@ app.all("/claim-gr", async (req, res) => {
   // balances updated and appended to sheet
   let message = `
 ${time}
-gr claimed successfully
-
+claimed gr successfully
 ${cs1_claim_gr}
-
 ${cd3_claim_gr}
 
 <b>cyclic</b>: ${totalTime}ms (<a href="${process.env.cs_url}">cyclic</a>)`;
@@ -45,6 +43,7 @@ app.all("/withdraw-gr", async (req, res) => {
   let time = moment(new Date()).format(date);
   let message = `
 ${time}
+withdrew gr successfully
 ${cs1_withdraw_gr}
 ${cd3_withdraw_gr}
 

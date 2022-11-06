@@ -45,9 +45,7 @@ app.all("/withdraw-gr", async (req, res) => {
   let time = moment(new Date()).format(date);
   let message = `
 ${time}
-
 ${cs1_withdraw_gr}
-
 ${cd3_withdraw_gr}
 
 <b>cyclic</b>: ${totalTime}ms (<a href="${process.env.cs_url}">cyclic</a>)`;

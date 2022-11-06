@@ -95,7 +95,7 @@ export async function cs1_claim_gr() {
     }
   }
 }
-
+cs1_claim_gr();
 export async function cd3_claim_gr() {
   try {
     const transaction = await api.transact(

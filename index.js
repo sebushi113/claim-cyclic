@@ -7,7 +7,7 @@ const s3 = new AWS.S3();
 import * as claim from "./claim.js";
 import sendMessage from "./notify.js";
 import bodyParser from "body-parser";
-const chat_id2 = process.env.chat_id2;
+const chat_id = process.env.chat_id;
 
 app.all("/claim-gr", async (req, res) => {
   let startTime = performance.now();
@@ -20,7 +20,7 @@ app.all("/claim-gr", async (req, res) => {
   console.log(`claim-gr: ${totalTime}ms`);
   let time = moment(new Date()).format(date);
   let tx_message = `${time}\n\n${cs1_claim_gr}\n\n${cd3_claim_gr}\n\ncyclic: ${totalTime}ms`;
-  await sendMessage(chat_id2, tx_message);
+  await sendMessage(chat_id, tx_message);
   res.send(`green rabbit claimed<br/>${totalTime}ms`);
 });
 
@@ -35,7 +35,7 @@ app.all("/withdraw-gr", async (req, res) => {
   console.log(`withdraw-gr: ${totalTime}ms`);
   let time = moment(new Date()).format(date);
   let tx_message = `${time}\n\n${cs1_withdraw_gr}\n\n${cd3_withdraw_gr}\n\ncyclic: ${totalTime}ms`;
-  await sendMessage(chat_id2, tx_message);
+  await sendMessage(chat_id, tx_message);
   res.send(`green rabbit withdrawn<br/>${totalTime}ms`);
 });
 

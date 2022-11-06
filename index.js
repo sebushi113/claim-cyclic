@@ -19,7 +19,16 @@ app.all("/claim-gr", async (req, res) => {
   let totalTime = (endTime - startTime).toFixed(3);
   console.log(`claim-gr: ${totalTime}ms`);
   let time = moment(new Date()).format(date);
-  let message = `${time}\n\n${cs1_claim_gr}\n\n${cd3_claim_gr}\n\ncyclic: ${totalTime}ms`;
+  // balances updated and appended to sheet
+  let message = `
+${time}
+gr claimed successfully
+
+${cs1_claim_gr}
+
+${cd3_claim_gr}
+
+<b>cyclic</b>: ${totalTime}ms (<a href="${process.env.cs_url}">cyclic</a>)`;
   await sendMessage(chat_id, message);
   res.send(`green rabbit claimed<br/>${totalTime}ms`);
 });
@@ -34,7 +43,14 @@ app.all("/withdraw-gr", async (req, res) => {
   let totalTime = (endTime - startTime).toFixed(3);
   console.log(`withdraw-gr: ${totalTime}ms`);
   let time = moment(new Date()).format(date);
-  let message = `${time}\n\n${cs1_withdraw_gr}\n\n${cd3_withdraw_gr}\n\ncyclic: ${totalTime}ms`;
+  let message = `
+${time}
+
+${cs1_withdraw_gr}
+
+${cd3_withdraw_gr}
+
+<b>cyclic</b>: ${totalTime}ms (<a href="${process.env.cs_url}">cyclic</a>)`;
   await sendMessage(chat_id, message);
   res.send(`green rabbit withdrawn<br/>${totalTime}ms`);
 });

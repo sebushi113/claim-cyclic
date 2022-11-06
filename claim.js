@@ -65,7 +65,13 @@ export async function cs1_claim_gr() {
       transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
 
     // let time = moment(new Date()).format(date);
-    let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\ncollection: ${at_data_collection}\nquantity: ${it_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
+    let message = `
+  🦁  <b>${at_data_user}</b>
+  account: ${at_account}
+  name: ${at_name}
+  collection: ${at_data_collection}
+  quantity: ${it_data_quantity}
+  <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
     // await sendMessage(chat_id, message);
     await sleep(5000);
@@ -125,7 +131,13 @@ export async function cd3_claim_gr() {
       transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
 
     // let time = moment(new Date()).format(date);
-    let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\ncollection: ${at_data_collection}\nquantity: ${it_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
+    let message = `
+  🐵  <b>${at_data_user}</b>
+  account: ${at_account}
+  name: ${at_name}
+  collection: ${at_data_collection}
+  quantity: ${it_data_quantity}
+  <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
     // await sendMessage(chat_id, message);
     await sleep(5000);
@@ -181,7 +193,12 @@ export async function cs1_withdraw_gr() {
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_quantity =
       transaction.processed.action_traces[0].act.data.quantity;
-    let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\nquantity: ${at_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
+    let message = `
+  🦁  <b>${at_data_user}</b>
+  account: ${at_account}
+  name: ${at_name}
+  quantity: ${at_data_quantity}
+  <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
     // await sendMessage(chat_id, message);
     await sleep(5000);
@@ -235,7 +252,12 @@ export async function cd3_withdraw_gr() {
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_quantity =
       transaction.processed.action_traces[0].act.data.quantity;
-    let message = `account: ${at_account}\nname: ${at_name}\nuser: ${at_data_user}\nquantity: ${at_data_quantity}\n<a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
+    let message = `
+  🐵  <b>${at_data_user}</b>
+  account: ${at_account}
+  name: ${at_name}
+  quantity: ${at_data_quantity}
+  <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
     // await sendMessage(chat_id, message);
     await sleep(5000);

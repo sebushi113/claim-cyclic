@@ -68,7 +68,7 @@ export async function cs1_claim_gr() {
     let message = `
 🦁  <b>${at_data_user}</b>
 account: ${at_account}
-name: ${at_name}
+name: <b>${at_name}</b>
 collection: ${at_data_collection}
 quantity: ${it_data_quantity}
 <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
@@ -134,7 +134,7 @@ export async function cd3_claim_gr() {
     let message = `
 🐵  <b>${at_data_user}</b>
 account: ${at_account}
-name: ${at_name}
+name: <b>${at_name}</b>
 collection: ${at_data_collection}
 quantity: ${it_data_quantity}
 <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
@@ -196,7 +196,7 @@ export async function cs1_withdraw_gr() {
     let message = `
 🦁  <b>${at_data_user}</b>
 account: ${at_account}
-name: ${at_name}
+name: <b>${at_name}</b>
 quantity: ${at_data_quantity}
 <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
@@ -255,7 +255,7 @@ export async function cd3_withdraw_gr() {
     let message = `
 🐵  <b>${at_data_user}</b>
 account: ${at_account}
-name: ${at_name}
+name: <b>${at_name}</b>
 quantity: ${at_data_quantity}
 <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;

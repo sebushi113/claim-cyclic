@@ -290,7 +290,7 @@ async function api_error() {
   rpc = new JsonRpc("http://wax.api.eosnation.io", { fetch });
   api = new Api({ rpc, signatureProvider }); //required to submit transactions
   console.log("  🔀  | switching api -> " + rpc.endpoint);
-  //test2
+  //test3
   let api_error_message = `
 🚨  api error
 🔀  switching api to <a href="http://wax.api.eosnation.io">wax.api.eosnation.io</a>`;

@@ -289,8 +289,10 @@ quantity: ${at_data_quantity}
 async function api_error() {
   rpc = new JsonRpc("http://wax.api.eosnation.io", { fetch });
   api = new Api({ rpc, signatureProvider }); //required to submit transactions
-  console.log("  🔁  | switching api -> " + rpc.endpoint);
-  let api_error_message = `api error 🔁\nswitching api to: <a href="http://wax.api.eosnation.io">eosnation</a>`;
+  console.log("  🔀  | switching api -> " + rpc.endpoint);
+  let api_error_message = `
+🚨  api error
+🔀  switching api to <a href="http://wax.api.eosnation.io">wax.api.eosnation.io</a>`;
   await sendMessage(chat_id, api_error_message);
 }
 

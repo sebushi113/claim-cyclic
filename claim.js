@@ -6,6 +6,7 @@ import moment from "moment";
 import * as dotenv from "dotenv";
 dotenv.config();
 import sendMessage from "./notify.js";
+// import { api_error } from "./api-error.js";
 
 const privateKeys = [process.env.cs1k, process.env.cd3k];
 
@@ -290,7 +291,6 @@ async function api_error() {
   rpc = new JsonRpc("http://wax.api.eosnation.io", { fetch });
   api = new Api({ rpc, signatureProvider }); //required to submit transactions
   console.log("  🔀  | switching api -> " + rpc.endpoint);
-  //test3
   let api_error_message = `
 🚨  api error
 🔀  switching api to <a href="http://wax.api.eosnation.io">wax.api.eosnation.io</a>`;

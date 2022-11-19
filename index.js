@@ -1,14 +1,15 @@
 import express from "express";
 import moment from "moment";
-// import AWS from "aws-sdk";
-// const s3 = new AWS.S3();
+import AWS from "aws-sdk";
+import bodyParser from "body-parser";
 import * as claim from "./claim.js";
 import sendMessage from "./notify.js";
-// import bodyParser from "body-parser";
 
 const app = express();
 const date = "YYYY-MM-DD HH:mm:ss";
+const s3 = new AWS.S3();
 const chat_id = process.env.chat_id;
+const bucket = process.env.BUCKET;
 
 app.all("/claim-gr", async (req, res) => {
   let startTime = performance.now();
@@ -53,70 +54,70 @@ ${cd3_withdraw_gr}
   res.send(`green rabbit withdrawn<br/>${totalTime}ms`);
 });
 
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
-// // curl -i some-app.cyclic.app/myFile.txt
-// app.get("*", async (req, res) => {
-//   let filename = req.path.slice(1);
+// curl -i some-app.cyclic.app/myFile.txt
+app.get("*", async (req, res) => {
+  let filename = req.path.slice(1);
 
-//   try {
-//     let s3File = await s3
-//       .getObject({
-//         Bucket: process.env.BUCKET,
-//         Key: filename,
-//       })
-//       .promise();
+  try {
+    let s3File = await s3
+      .getObject({
+        Bucket: bucket,
+        Key: filename,
+      })
+      .promise();
 
-//     res.set("Content-type", s3File.ContentType);
-//     res.send(s3File.Body.toString()).end();
-//   } catch (error) {
-//     if (error.code === "NoSuchKey") {
-//       console.log(`No such key ${filename}`);
-//       res.sendStatus(404).end();
-//     } else {
-//       console.log(error);
-//       res.sendStatus(500).end();
-//     }
-//   }
-// });
+    res.set("Content-type", s3File.ContentType);
+    res.send(s3File.Body.toString()).end();
+  } catch (error) {
+    if (error.code === "NoSuchKey") {
+      console.log(`No such key ${filename}`);
+      res.sendStatus(404).end();
+    } else {
+      console.log(error);
+      res.sendStatus(500).end();
+    }
+  }
+});
 
-// // curl -i -XPUT --data '{"k1":"value 1", "k2": "value 2"}' -H 'Content-type: application/json' https://some-app.cyclic.app/myFile.txt
-// app.put("*", async (req, res) => {
-//   let filename = req.path.slice(1);
+// curl -i -XPUT --data '{"k1":"value 1", "k2": "value 2"}' -H 'Content-type: application/json' https://some-app.cyclic.app/myFile.txt
+app.put("*", async (req, res) => {
+  let filename = req.path.slice(1);
 
-//   console.log(typeof req.body);
+  console.log(typeof req.body);
 
-//   await s3
-//     .putObject({
-//       Body: JSON.stringify(req.body),
-//       Bucket: process.env.BUCKET,
-//       Key: filename,
-//     })
-//     .promise();
+  await s3
+    .putObject({
+      Body: JSON.stringify(req.body),
+      Bucket: bucket,
+      Key: filename,
+    })
+    .promise();
 
-//   res.set("Content-type", "text/plain");
-//   res.send("ok").end();
-// });
+  res.set("Content-type", "text/plain");
+  res.send("ok").end();
+});
 
-// // curl -i -XDELETE https://some-app.cyclic.app/myFile.txt
-// app.delete("*", async (req, res) => {
-//   let filename = req.path.slice(1);
+// curl -i -XDELETE https://some-app.cyclic.app/myFile.txt
+app.delete("*", async (req, res) => {
+  let filename = req.path.slice(1);
 
-//   await s3
-//     .deleteObject({
-//       Bucket: process.env.BUCKET,
-//       Key: filename,
-//     })
-//     .promise();
+  await s3
+    .deleteObject({
+      Bucket: bucket,
+      Key: filename,
+    })
+    .promise();
 
-//   res.set("Content-type", "text/plain");
-//   res.send("ok").end();
-// });
+  res.set("Content-type", "text/plain");
+  res.send("ok").end();
+});
 
-// // /////////////////////////////////////////////////////////////////////////////
-// // Catch all handler for all other request.
-// app.use("*", (req, res) => {
-//   res.sendStatus(404).end();
-// });
+// /////////////////////////////////////////////////////////////////////////////
+// Catch all handler for all other request.
+app.use("*", (req, res) => {
+  res.sendStatus(404).end();
+});
 
 app.listen(process.env.PORT || 3000);

@@ -22,7 +22,7 @@ const cs1p = process.env.cs1p;
 const cd3a = process.env.cd3a;
 const cd3p = process.env.cd3p;
 const chat_id = process.env.chat_id;
-const chat_id2 = process.env.chat_id2;
+const errors = process.env.errors;
 const date = "YYYY-MM-DD HH:mm:ss";
 
 function sleep(ms) {
@@ -80,7 +80,7 @@ quantity: ${it_data_quantity}
   } catch (error) {
     let error_message = `🦁 w | cs1_claim_gr\n${error.message}`;
     console.log(error_message);
-    await sendMessage(chat_id, error_message);
+    await sendMessage(errors, error_message);
     if (
       error.message ==
       "assertion failure with message: nothing to claim just yet"
@@ -146,7 +146,7 @@ quantity: ${it_data_quantity}
   } catch (error) {
     let error_message = `🐵 w | cd3_claim_gr\n${error.message}`;
     console.log(error_message);
-    await sendMessage(chat_id, error_message);
+    await sendMessage(errors, error_message);
     if (
       error.message ==
       "assertion failure with message: nothing to claim just yet"
@@ -207,7 +207,7 @@ quantity: ${at_data_quantity}
   } catch (error) {
     let error_message = `🦁 w | cs1_withdraw_gr\n${error.message}`;
     console.log(error_message);
-    await sendMessage(chat_id, error_message);
+    await sendMessage(errors, error_message);
     if (error.message == "assertion failure with message: overdrawn balance") {
       console.log("🦁✅ w | not enough to withdraw, waiting...");
       return;
@@ -266,7 +266,7 @@ quantity: ${at_data_quantity}
   } catch (error) {
     let error_message = `🐵 w | cd3_withdraw_gr\n${error.message}`;
     console.log(error_message);
-    await sendMessage(chat_id, error_message);
+    await sendMessage(errors, error_message);
     if (error.message == "assertion failure with message: overdrawn balance") {
       console.log("🐵✅ w | not enough to withdraw, waiting...");
       return;

@@ -34,6 +34,6 @@ next-env.d.ts
 
 *.env
 node_modules
-.unused
+unused
 # ignore all logs
 # *.log

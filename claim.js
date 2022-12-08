@@ -294,7 +294,7 @@ async function api_error() {
   let api_error_message = `
 🚨  api error
 🔀  switching api to <a href="http://wax.api.eosnation.io">wax.api.eosnation.io</a>`;
-  await sendMessage(chat_id, api_error_message);
+  await sendMessage(errors, api_error_message);
 }
 
 console.log("rpc  | " + rpc.endpoint);

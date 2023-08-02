@@ -169,6 +169,53 @@ quantity: ${it_data_quantity}
   }
 }
 
+export async function get_cs1_balance() {
+  try {
+    const transaction = await rpc.get_table_rows({
+      json: true, // Get the response as json
+      code: "accounts.gr", // Contract that we target
+      scope: cs1a, // Account that owns the data
+      table: "vaults", // Table name
+      limit: 1, // Here we limit to 1 to get only row
+      reverse: false, // Optional: Get reversed data
+      show_payer: false, // Optional: Show ram payer
+    });
+    const balance = transaction.rows[0]; // Here we get balance as string, then convert it to float and return it.
+    console.log(balance);
+    return balance;
+  } catch (error) {
+    console.log(error);
+    throw error;
+    // await handleError(error, retryCount, "get_cs1_balance");
+    // await handleError(error, retryCount, get_cs1_balance); // Pass the function name as an argument
+  }
+}
+
+export async function get_cd3_balance() {
+  try {
+    const transaction = await rpc.get_table_rows({
+      json: true, // Get the response as json
+      code: "accounts.gr", // Contract that we target
+      scope: cd3a, // Account that owns the data
+      table: "vaults", // Table name
+      limit: 1, // Here we limit to 1 to get only row
+      reverse: false, // Optional: Get reversed data
+      show_payer: false, // Optional: Show ram payer
+    });
+    const balance = transaction.rows[0]; // Here we get balance as string, then convert it to float and return it.
+    console.log(balance);
+    return balance;
+  } catch (error) {
+    console.log(error);
+    throw error;
+    // await handleError(error, retryCount, "get_cd3_balance");
+    // await handleError(error, retryCount, get_cd3_balance); // Pass the function name as an argument
+  }
+}
+
+const cs1_balance = await get_cs1_balance();
+const cd3_balance = await get_cd3_balance();
+
 export async function cs1_withdraw_gr() {
   try {
     const transaction = await api.transact(
@@ -180,7 +227,8 @@ export async function cs1_withdraw_gr() {
             authorization: [{ actor: cs1a, permission: cs1p }],
             data: {
               user: cs1a,
-              quantity: "282504.0000 SHELL",
+              // quantity: "282504.0000 SHELL",
+              quantity: cs1_balance,
             },
           },
         ],
@@ -239,7 +287,8 @@ export async function cd3_withdraw_gr() {
             authorization: [{ actor: cd3a, permission: cd3p }],
             data: {
               user: cd3a,
-              quantity: "48344.4000 SHELL",
+              // quantity: "48344.4000 SHELL",
+              quantity: cd3_balance,
             },
           },
         ],

@@ -180,12 +180,10 @@ export async function get_cs1_balance() {
       reverse: false, // Optional: Get reversed data
       show_payer: false, // Optional: Show ram payer
     });
-    const balance = transaction.rows[0]; // Here we get balance as string, then convert it to float and return it.
-    // const shell = parseFloat(balance.balance.replace(" SHELL", ""));
-    const shell = balance.balance.replace(" SHELL", "");
-    // console.log(balance);
-    console.log(shell);
-    return shell;
+    const balance = transaction.rows[0].balance;
+    // const shell = balance.split(" ")[0];
+    console.log(balance);
+    return balance;
   } catch (error) {
     console.log(error);
     throw error;
@@ -205,12 +203,9 @@ export async function get_cd3_balance() {
       reverse: false, // Optional: Get reversed data
       show_payer: false, // Optional: Show ram payer
     });
-    const balance = transaction.rows[0]; // Here we get balance as string, then convert it to float and return it.
-    // const shell = parseFloat(balance.balance.replace(" SHELL", ""));
-    const shell = balance.balance.replace(" SHELL", "");
-    // console.log(balance);
-    console.log(shell);
-    return shell;
+    const balance = transaction.rows[0].balance;
+    console.log(balance);
+    return balance;
   } catch (error) {
     console.log(error);
     throw error;

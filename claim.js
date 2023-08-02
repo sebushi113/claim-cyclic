@@ -181,8 +181,11 @@ export async function get_cs1_balance() {
       show_payer: false, // Optional: Show ram payer
     });
     const balance = transaction.rows[0]; // Here we get balance as string, then convert it to float and return it.
-    console.log(balance);
-    return balance;
+    // const shell = parseFloat(balance.balance.replace(" SHELL", ""));
+    const shell = balance.balance.replace(" SHELL", "");
+    // console.log(balance);
+    console.log(shell);
+    return shell;
   } catch (error) {
     console.log(error);
     throw error;
@@ -203,8 +206,11 @@ export async function get_cd3_balance() {
       show_payer: false, // Optional: Show ram payer
     });
     const balance = transaction.rows[0]; // Here we get balance as string, then convert it to float and return it.
-    console.log(balance);
-    return balance;
+    // const shell = parseFloat(balance.balance.replace(" SHELL", ""));
+    const shell = balance.balance.replace(" SHELL", "");
+    // console.log(balance);
+    console.log(shell);
+    return shell;
   } catch (error) {
     console.log(error);
     throw error;
@@ -215,6 +221,8 @@ export async function get_cd3_balance() {
 
 const cs1_balance = await get_cs1_balance();
 const cd3_balance = await get_cd3_balance();
+// console.log(cs1_balance);
+// console.log(cd3_balance);
 
 export async function cs1_withdraw_gr() {
   try {

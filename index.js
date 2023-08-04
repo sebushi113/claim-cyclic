@@ -45,9 +45,7 @@ app.all("/withdraw-gr", async (req, res) => {
   let time = moment(new Date()).format(date);
   let message = `
 ${time}
-withdrew gr
-<code>cs1 balance:  ${claim.cs1_balance}</code>
-<code>cd3 balance:  ${claim.cd3_balance}</code>
+withdrew gr successfully
 ${cs1_withdraw_gr}
 ${cd3_withdraw_gr}
 

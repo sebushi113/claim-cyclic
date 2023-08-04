@@ -36,4 +36,5 @@ next-env.d.ts
 node_modules
 unused
 # ignore all logs
-# *.log
+# *.log.DS_Store
+.DS_Store

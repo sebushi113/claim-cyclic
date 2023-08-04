@@ -257,7 +257,6 @@ name: <b>${at_name}</b>
     await sleep(5000);
     await cs1_withdraw_gr();
   } catch (error) {
-    throw error;
     let error_message = `🦁 w | cs1_withdraw_gr\nbalance: ${cs1_balance}\n${error.message}`;
     console.log(error_message);
     await sendMessage(errors, error_message);
@@ -319,7 +318,6 @@ name: <b>${at_name}</b>
     await sleep(5000);
     await cd3_withdraw_gr();
   } catch (error) {
-    throw error;
     let error_message = `🐵 w | cd3_withdraw_gr\nbalance: ${cd3_balance}\n${error.message}`;
     console.log(error_message);
     await sendMessage(errors, error_message);

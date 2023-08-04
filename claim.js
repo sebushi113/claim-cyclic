@@ -214,8 +214,8 @@ export async function get_cd3_balance() {
   }
 }
 
-const cs1_balance = await get_cs1_balance();
-const cd3_balance = await get_cd3_balance();
+export const cs1_balance = await get_cs1_balance();
+export const cd3_balance = await get_cd3_balance();
 // console.log(cs1_balance);
 // console.log(cd3_balance);
 
@@ -249,15 +249,16 @@ export async function cs1_withdraw_gr() {
 🦁  <b>${at_data_user}</b>
 account: ${at_account}
 name: <b>${at_name}</b>
-<code>balance:  ${cs1_balance}
-quantity: ${at_data_quantity}</code>
+<code>balance:  ${cs1_balance}</code>
+<code>quantity: ${at_data_quantity}</code>
 <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
     // await sendMessage(chat_id, message);
     await sleep(5000);
     await cs1_withdraw_gr();
   } catch (error) {
-    let error_message = `🦁 w | cs1_withdraw_gr\n${error.message}`;
+    throw error;
+    let error_message = `🦁 w | cs1_withdraw_gr\nbalance: ${cs1_balance}\n${error.message}`;
     console.log(error_message);
     await sendMessage(errors, error_message);
     if (error.message == "assertion failure with message: overdrawn balance") {
@@ -310,15 +311,16 @@ export async function cd3_withdraw_gr() {
 🐵  <b>${at_data_user}</b>
 account: ${at_account}
 name: <b>${at_name}</b>
-<code>balance:  ${cd3_balance}
-quantity: ${at_data_quantity}</code>
+<code>balance:  ${cd3_balance}</code>
+<code>quantity: ${at_data_quantity}</code>
 <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
     // await sendMessage(chat_id, message);
     await sleep(5000);
     await cd3_withdraw_gr();
   } catch (error) {
-    let error_message = `🐵 w | cd3_withdraw_gr\n${error.message}`;
+    throw error;
+    let error_message = `🐵 w | cd3_withdraw_gr\nbalance: ${cd3_balance}\n${error.message}`;
     console.log(error_message);
     await sendMessage(errors, error_message);
     if (error.message == "assertion failure with message: overdrawn balance") {

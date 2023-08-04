@@ -231,7 +231,7 @@ export async function cs1_withdraw_gr() {
             data: {
               user: cs1a,
               // quantity: "282504.0000 SHELL",
-              quantity: cs1_balance,
+              quantity: await cs1_balance,
             },
           },
         ],
@@ -292,7 +292,7 @@ export async function cd3_withdraw_gr() {
             data: {
               user: cd3a,
               // quantity: "48344.4000 SHELL",
-              quantity: cd3_balance,
+              quantity: await cd3_balance,
             },
           },
         ],

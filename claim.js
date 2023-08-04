@@ -249,8 +249,8 @@ export async function cs1_withdraw_gr() {
 🦁  <b>${at_data_user}</b>
 account: ${at_account}
 name: <b>${at_name}</b>
-balance: ${cs1_balance}
-quantity: ${at_data_quantity}
+<code>balance:  ${cs1_balance}
+quantity: ${at_data_quantity}</code>
 <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
     // await sendMessage(chat_id, message);
@@ -310,8 +310,8 @@ export async function cd3_withdraw_gr() {
 🐵  <b>${at_data_user}</b>
 account: ${at_account}
 name: <b>${at_name}</b>
-balance: ${cd3_balance}
-quantity: ${at_data_quantity}
+<code>balance:  ${cd3_balance}
+quantity: ${at_data_quantity}</code>
 <a href="https://wax.bloks.io/transaction/${tx}">view transaction</a>`;
     return message;
     // await sendMessage(chat_id, message);

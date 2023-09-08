@@ -226,7 +226,7 @@ export async function cs1_withdraw_gr() {
         actions: [
           {
             account: "accounts.gr",
-            name: "withdraw",
+            name: "bulkwithdraw",
             authorization: [{ actor: cs1a, permission: cs1p }],
             data: {
               user: cs1a,
@@ -287,7 +287,7 @@ export async function cd3_withdraw_gr() {
         actions: [
           {
             account: "accounts.gr",
-            name: "withdraw",
+            name: "bulkwithdraw",
             authorization: [{ actor: cd3a, permission: cd3p }],
             data: {
               user: cd3a,

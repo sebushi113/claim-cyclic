@@ -246,7 +246,7 @@ export async function cs1_withdraw_gr() {
     let at_name = transaction.processed.action_traces[0].act.name;
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_quantity =
-      transaction.processed.action_traces[0].act.data.quantity;
+      transaction.processed.action_traces[0].act.data.quantities;
     let message = `
 🦁  <b>${at_data_user}</b>
 account: ${at_account}
@@ -309,7 +309,7 @@ export async function cd3_withdraw_gr() {
     let at_name = transaction.processed.action_traces[0].act.name;
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_quantity =
-      transaction.processed.action_traces[0].act.data.quantity;
+      transaction.processed.action_traces[0].act.data.quantities;
     let message = `
 🐵  <b>${at_data_user}</b>
 account: ${at_account}

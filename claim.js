@@ -55,6 +55,8 @@ export async function cs1_claim_gr() {
       },
       { useLastIrreversible: true, expireSeconds: 300 }
     );
+    console.log("transaction");
+    console.log(transaction);
     let tx = transaction.transaction_id;
     console.log("🦁 c | " + tx);
     let at_account = transaction.processed.action_traces[0].act.account;
@@ -62,6 +64,8 @@ export async function cs1_claim_gr() {
     let at_data_user = transaction.processed.action_traces[0].act.data.user;
     let at_data_collection =
       transaction.processed.action_traces[0].act.data.collection;
+    console.log("at_data_collection");
+    console.log(at_data_collection);
     let it_data_quantity =
       transaction.processed.action_traces[0].inline_traces[0].act.data.quantity;
 
